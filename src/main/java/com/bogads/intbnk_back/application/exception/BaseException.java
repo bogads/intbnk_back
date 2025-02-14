@@ -1,13 +1,7 @@
 package com.bogads.intbnk_back.application.exception;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@Data
 public abstract class BaseException extends RuntimeException {
     private String message;
     private String code;
@@ -19,6 +13,39 @@ public abstract class BaseException extends RuntimeException {
         this.message = message;
         this.code = code;
         this.httpStatusCode = httpStatusCode;
+        this.detail = detail;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public HttpStatus getHttpStatusCode() {
+        return httpStatusCode;
+    }
+
+    public void setHttpStatusCode(HttpStatus httpStatusCode) {
+        this.httpStatusCode = httpStatusCode;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
         this.detail = detail;
     }
 }
