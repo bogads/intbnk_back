@@ -2,6 +2,8 @@ package com.bogads.intbnk_back.infrastructure.mapper.company;
 
 import com.bogads.intbnk_back.domain.Company;
 import com.bogads.intbnk_back.infrastructure.adapters.repository.company.entity.CompanyEntity;
+import com.bogads.intbnk_back.infrastructure.controller.request.CreateCompanyRequest;
+import jakarta.validation.Valid;
 
 public final class CompanyMapper {
     private CompanyMapper() {
@@ -26,6 +28,13 @@ public final class CompanyMapper {
         model.setName(entity.getName());
         model.setCreatedAt(entity.getCreatedAt());
         model.setUpdatedAt(entity.getUpdatedAt());
+        return model;
+    }
+
+    public static Company toModel(@Valid CreateCompanyRequest request) {
+        var model = new Company();
+        model.setCuit(request.getCuit());
+        model.setName(request.getName());
         return model;
     }
 }
