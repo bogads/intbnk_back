@@ -21,6 +21,9 @@ public final class CompanyMapper {
     }
 
     public static Company toModel(CompanyEntity entity) {
+        if (entity == null) {
+            return null;
+        }
         var model = new Company();
         model.setId(entity.getId());
         model.setCuit(entity.getCuit());

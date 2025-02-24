@@ -5,7 +5,10 @@ import com.bogads.intbnk_back.application.port.repository.AccountRepository;
 import com.bogads.intbnk_back.domain.Account;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AccountServiceImplDB implements AccountService {
@@ -18,6 +21,7 @@ public class AccountServiceImplDB implements AccountService {
 
     @Override
     public Account createAccount(Account account) {
+        account.setNumber(UUID.randomUUID().toString());
         return accountRepository.save(account);
     }
 

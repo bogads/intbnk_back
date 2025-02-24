@@ -1,8 +1,9 @@
 package com.bogads.intbnk_back.infrastructure.controller;
 
 import com.bogads.intbnk_back.application.port.AccountService;
-import com.bogads.intbnk_back.infrastructure.controller.request.CreateTransferRequest;
+import com.bogads.intbnk_back.infrastructure.controller.request.CreateAccountRequest;
 import com.bogads.intbnk_back.infrastructure.controller.response.CreateAccountResponse;
+import com.bogads.intbnk_back.infrastructure.mapper.account.AccountMapper;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +23,9 @@ public class AccountController {
     }
 
     @PostMapping()
-    public CreateAccountResponse createAccount(@RequestBody @Valid CreateTransferRequest request) {
-        return new CreateAccountResponse();
+    public CreateAccountResponse createAccount(@RequestBody @Valid CreateAccountRequest request) {
+        var account = accountService.createAccount(AccountMapper.toModel(request));
+        return AccountMapper.toCreateAccountResponse(account);
     }
 
 }

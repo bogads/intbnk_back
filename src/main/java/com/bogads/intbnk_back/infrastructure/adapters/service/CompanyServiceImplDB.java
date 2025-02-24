@@ -5,6 +5,8 @@ import com.bogads.intbnk_back.application.port.service.CompanyService;
 import com.bogads.intbnk_back.domain.Company;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class CompanyServiceImplDB implements CompanyService {
 
@@ -16,6 +18,7 @@ public class CompanyServiceImplDB implements CompanyService {
 
     @Override
     public Company createCompany(Company company) {
+        company.setAdhesionTime(LocalDateTime.now());
         return companyRepository.save(company);
     }
 }

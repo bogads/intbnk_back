@@ -9,7 +9,7 @@ import jakarta.persistence.OneToMany;
 
 import java.util.List;
 
-@Entity(name = "account")
+@Entity(name = "accounts")
 public class AccountEntity extends SoftDeletableEntity {
     private String accountNumber;
     @ManyToOne
