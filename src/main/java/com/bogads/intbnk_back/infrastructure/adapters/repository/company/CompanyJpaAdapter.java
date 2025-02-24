@@ -18,7 +18,8 @@ public class CompanyJpaAdapter implements CompanyRepository {
     @Override
     public Company save(Company company) {
         var entity = CompanyMapper.toEntity(company);
-        return null;
+        var persistedEntity = repository.save(entity);
+        return CompanyMapper.toModel(persistedEntity);
     }
 
     @Override

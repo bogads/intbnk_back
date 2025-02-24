@@ -5,7 +5,6 @@ import com.bogads.intbnk_back.infrastructure.controller.request.CreateCompanyReq
 import com.bogads.intbnk_back.infrastructure.controller.response.CreateCompanyResponse;
 import com.bogads.intbnk_back.infrastructure.mapper.company.CompanyMapper;
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import static com.bogads.intbnk_back.infrastructure.utils.ApiConstants.API_V1_CO
 
 @RestController
 @RequestMapping(API_V1_COMPANIES)
-@Slf4j
 public class CompanyRestController {
 
     private final CompanyService companyService;
@@ -26,6 +24,8 @@ public class CompanyRestController {
 
     @PostMapping()
     public CreateCompanyResponse createCompany(@Valid @RequestBody CreateCompanyRequest request) {
-        companyService.createCompany(CompanyMapper.toModel(request));
+        var companyResult = companyService.createCompany(CompanyMapper.toModel(request));
+        return CompanyMapper.toCreateCompanyResponse(companyResult);
     }
+    
 }

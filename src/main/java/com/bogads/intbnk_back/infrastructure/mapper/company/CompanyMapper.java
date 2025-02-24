@@ -3,7 +3,7 @@ package com.bogads.intbnk_back.infrastructure.mapper.company;
 import com.bogads.intbnk_back.domain.Company;
 import com.bogads.intbnk_back.infrastructure.adapters.repository.company.entity.CompanyEntity;
 import com.bogads.intbnk_back.infrastructure.controller.request.CreateCompanyRequest;
-import jakarta.validation.Valid;
+import com.bogads.intbnk_back.infrastructure.controller.response.CreateCompanyResponse;
 
 public final class CompanyMapper {
     private CompanyMapper() {
@@ -31,10 +31,19 @@ public final class CompanyMapper {
         return model;
     }
 
-    public static Company toModel(@Valid CreateCompanyRequest request) {
+    public static Company toModel(CreateCompanyRequest request) {
         var model = new Company();
         model.setCuit(request.getCuit());
         model.setName(request.getName());
         return model;
+    }
+
+    public static CreateCompanyResponse toCreateCompanyResponse(Company companyResult) {
+        var response = new CreateCompanyResponse();
+        response.setId(companyResult.getId());
+        response.setCuit(companyResult.getCuit());
+        response.setName(companyResult.getName());
+        response.setAdhesionTime(companyResult.getAdhesionTime());
+        return response;
     }
 }
