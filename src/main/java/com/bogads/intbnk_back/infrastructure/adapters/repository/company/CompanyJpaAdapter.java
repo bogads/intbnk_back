@@ -48,4 +48,13 @@ public class CompanyJpaAdapter implements CompanyRepository {
         var optCompany = repository.findById(id);
         return optCompany.map(CompanyMapper::toModel);
     }
+
+    @Override
+    public Optional<Company> findCompanyByCuitAndName(String cuit, String name) {
+        var optCompany = repository.findByNameOrCuit(cuit, name);
+        if (optCompany.isPresent()) {
+            return optCompany.map(CompanyMapper::toModel);
+        }
+        return Optional.empty();
+    }
 }

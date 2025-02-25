@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CompanyJpaRepository extends SoftDeletableRepository<CompanyEntity> {
@@ -21,5 +22,7 @@ public interface CompanyJpaRepository extends SoftDeletableRepository<CompanyEnt
                 WHERE (t_sender.createdAt >= :oneMonthAgo OR t_receiver.createdAt >= :oneMonthAgo)
             """)
     List<CompanyEntity> findCompaniesWithTransfersLastMonth(@Param("oneMonthAgo") LocalDateTime oneMonthAgo);
+
+    Optional<CompanyEntity> findByNameOrCuit(String name, String cuit);
 
 }

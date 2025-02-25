@@ -2,42 +2,42 @@ package com.bogads.intbnk_back.infrastructure.adapters.repository.banktransfer.e
 
 import com.bogads.intbnk_back.infrastructure.adapters.repository.SoftDeletableEntity;
 import com.bogads.intbnk_back.infrastructure.adapters.repository.account.entity.AccountEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity(name = "bank_transfers")
 public class BankTransferEntity extends SoftDeletableEntity {
-    @ManyToOne
-    private AccountEntity sender;
-    @ManyToOne
-    private AccountEntity receiver;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "source_id")
+    private AccountEntity source;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "target_id")
+    private AccountEntity target;
     @Column
-    private BigDecimal bigDecimal;
+    private BigDecimal amount;
 
-    public AccountEntity getSender() {
-        return sender;
+    public AccountEntity getSource() {
+        return source;
     }
 
-    public void setSender(AccountEntity sender) {
-        this.sender = sender;
+    public void setSource(AccountEntity sender) {
+        this.source = sender;
     }
 
-    public AccountEntity getReceiver() {
-        return receiver;
+    public AccountEntity getTarget() {
+        return target;
     }
 
-    public void setReceiver(AccountEntity receiver) {
-        this.receiver = receiver;
+    public void setTarget(AccountEntity receiver) {
+        this.target = receiver;
     }
 
-    public BigDecimal getBigDecimal() {
-        return bigDecimal;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setBigDecimal(BigDecimal bigDecimal) {
-        this.bigDecimal = bigDecimal;
+    public void setAmount(BigDecimal bigDecimal) {
+        this.amount = bigDecimal;
     }
 }

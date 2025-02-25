@@ -1,12 +1,10 @@
 package com.bogads.intbnk_back.infrastructure.adapters.service;
 
-import com.bogads.intbnk_back.application.port.AccountService;
+import com.bogads.intbnk_back.application.port.service.AccountService;
 import com.bogads.intbnk_back.application.port.repository.AccountRepository;
 import com.bogads.intbnk_back.domain.Account;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 

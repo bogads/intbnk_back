@@ -10,4 +10,6 @@ public interface CompanyRepository {
     List<Company> findCompaniesWithTransfersLastMonth();
     List<Company> findCompaniesJoinedLastMonth();
     Optional<Company> findCompanyById(String id);
+
+    Optional<Company> findCompanyByCuitAndName(String cuit, String name);
 }

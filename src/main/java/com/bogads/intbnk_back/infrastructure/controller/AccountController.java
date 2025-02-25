@@ -1,6 +1,6 @@
 package com.bogads.intbnk_back.infrastructure.controller;
 
-import com.bogads.intbnk_back.application.port.AccountService;
+import com.bogads.intbnk_back.application.port.service.AccountService;
 import com.bogads.intbnk_back.infrastructure.controller.request.CreateAccountRequest;
 import com.bogads.intbnk_back.infrastructure.controller.response.CreateAccountResponse;
 import com.bogads.intbnk_back.infrastructure.mapper.account.AccountMapper;

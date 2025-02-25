@@ -4,6 +4,7 @@ import com.bogads.intbnk_back.infrastructure.adapters.repository.SoftDeletableEn
 import com.bogads.intbnk_back.infrastructure.adapters.repository.account.entity.AccountEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 import java.time.LocalDateTime;
@@ -17,7 +18,7 @@ public class CompanyEntity extends SoftDeletableEntity {
     private String cuit;
     @Column(name = "fecha_de_adhesion")
     private LocalDateTime adhesionTime;
-    @OneToMany
+    @OneToMany(mappedBy = "company", targetEntity = AccountEntity.class, orphanRemoval = true)
     private List<AccountEntity> accounts;
 
     public CompanyEntity() {

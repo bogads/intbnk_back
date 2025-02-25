@@ -3,20 +3,19 @@ package com.bogads.intbnk_back.infrastructure.adapters.repository.account.entity
 import com.bogads.intbnk_back.infrastructure.adapters.repository.SoftDeletableEntity;
 import com.bogads.intbnk_back.infrastructure.adapters.repository.banktransfer.entity.BankTransferEntity;
 import com.bogads.intbnk_back.infrastructure.adapters.repository.company.entity.CompanyEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity(name = "accounts")
 public class AccountEntity extends SoftDeletableEntity {
     private String accountNumber;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = CompanyEntity.class)
+    @JoinColumn(name = "company_id")
     private CompanyEntity company;
-    @OneToMany
+    @OneToMany(mappedBy = "source", fetch = FetchType.LAZY, targetEntity = BankTransferEntity.class)
     private List<BankTransferEntity> sender;
-    @OneToMany
+    @OneToMany(mappedBy = "target", fetch = FetchType.LAZY, targetEntity = BankTransferEntity.class)
     private List<BankTransferEntity> receiver;
 
     public String getAccountNumber() {

@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class CreateTransferRequest {
     private BigDecimal amount;
-    private String accountNumber;
-    private String recipientAccount;
+    private String sourceAccountId;
+    private String targetAccountId;
 
     public BigDecimal getAmount() {
         return amount;
@@ -15,19 +15,19 @@ public class CreateTransferRequest {
         this.amount = amount;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getSourceAccountId() {
+        return sourceAccountId;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setSourceAccountId(String sourceAccountId) {
+        this.sourceAccountId = sourceAccountId;
     }
 
-    public String getRecipientAccount() {
-        return recipientAccount;
+    public String getTargetAccountId() {
+        return targetAccountId;
     }
 
-    public void setRecipientAccount(String recipientAccount) {
-        this.recipientAccount = recipientAccount;
+    public void setTargetAccountId(String targetAccountId) {
+        this.targetAccountId = targetAccountId;
     }
 }

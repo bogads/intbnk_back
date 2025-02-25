@@ -17,6 +17,7 @@ public final class AccountMapper {
         //TODO implement all attributes
         return accountModel;
     }
+
     public static Account toModel(CreateAccountRequest request) {
         var accountModel = new Account();
         var company = new Company();
@@ -35,7 +36,9 @@ public final class AccountMapper {
         var entity = new AccountEntity();
         entity.setId(account.getId());
         entity.setAccountNumber(account.getNumber());
-        entity.setCompany(CompanyMapper.toEntity(account.getCompany()));
+        if (account.getCompany() != null) {
+            entity.setCompany(CompanyMapper.toEntity(account.getCompany()));
+        }
         //TODO add transfer list
         return entity;
     }

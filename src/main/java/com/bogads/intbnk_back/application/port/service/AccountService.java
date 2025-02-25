@@ -1,4 +1,4 @@
-package com.bogads.intbnk_back.application.port;
+package com.bogads.intbnk_back.application.port.service;
 
 import com.bogads.intbnk_back.domain.Account;
 

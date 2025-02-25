@@ -2,6 +2,7 @@ package com.bogads.intbnk_back.infrastructure.adapters.repository.banktransfer;
 
 import com.bogads.intbnk_back.application.port.repository.BankTransferRepository;
 import com.bogads.intbnk_back.domain.BankTransfer;
+import com.bogads.intbnk_back.infrastructure.mapper.banktransfer.BankTransferMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -15,8 +16,8 @@ public class BankTransferJpaAdapter implements BankTransferRepository {
     }
 
     @Override
-    public BankTransfer save(BankTransfer account) {
-        return null;
+    public BankTransfer save(BankTransfer bankTransfer) {
+        return BankTransferMapper.toModel(repository.save(BankTransferMapper.toEntity(bankTransfer)));
     }
 
     @Override
