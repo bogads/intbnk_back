@@ -25,6 +25,6 @@ public class AccountServiceImplDB implements AccountService {
 
     @Override
     public Optional<Account> findAccountById(String id) {
-        return Optional.empty();
+        return accountRepository.findAccountById(id);
     }
 }
